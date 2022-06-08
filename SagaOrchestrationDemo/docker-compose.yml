@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sagaorchestrationdemo.webapi:
+    image: ${DOCKER_REGISTRY-}sagaorchestrationdemowebapi
+    build:
+      context: .
+      dockerfile: SagaOrchestrationDemo.WebApi/Dockerfile

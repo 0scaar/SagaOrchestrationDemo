@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using Entity = SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.Entities;
+using Entity = SagaOrchestrationDemo.Infrastructure.Database.Entities;
 using Domains = SagaOrchestrationDemo.Domain.Domains;
 
-namespace SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.AutoMapperProfile
+namespace SagaOrchestrationDemo.Infrastructure.Mapper
 {
-    public class InfraDomainProfile : Profile
+    public class MapperProfile : Profile
     {
-        public InfraDomainProfile()
+        public MapperProfile()
         {
             CreateMap<Entity.Customer, Domains.Customer>().ReverseMap();
             CreateMap<Entity.Product, Domains.Product>().ReverseMap();

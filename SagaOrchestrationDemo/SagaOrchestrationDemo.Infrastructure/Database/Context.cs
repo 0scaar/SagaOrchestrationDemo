@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.Entities;
-using SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.EntityConfigurations;
+using SagaOrchestrationDemo.Infrastructure.Database.Entities;
+using SagaOrchestrationDemo.Infrastructure.Database.Map;
 using System;
 using System.Collections.Generic;
 
-namespace SagaOrchestrationDemo.Infrastructure.PostgresDataAccess
+namespace SagaOrchestrationDemo.Infrastructure.Database
 {
-    public class Contex : DbContext
+    public class Context : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }

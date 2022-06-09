@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.Entities;
+using SagaOrchestrationDemo.Infrastructure.Database.Entities;
 
-namespace SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.EntityConfigurations
+namespace SagaOrchestrationDemo.Infrastructure.Database.Map
 {
     public class OrderConfiguration : IEntityTypeConfiguration<Order>
     {
@@ -33,8 +33,8 @@ namespace SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.EntityConfigur
                 .IsRequired()
                 .HasMaxLength(10);
 
-            builder.HasOne<Customer>()
-                .WithMany()
+            builder.HasOne(o => o.Customer)
+                .WithMany(m => m.Orders)
                 .HasForeignKey(o => o.CustomerId);
         }
     }

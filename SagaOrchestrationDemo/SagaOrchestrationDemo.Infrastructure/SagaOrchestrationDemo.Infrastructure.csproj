@@ -5,13 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="PostgresDataAccess\Migrations\" />
+    <Folder Include="DataAccess\Entities\Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.4.0" />
     <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.ExpressionMapping" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SagaOrchestrationDemo.Application\SagaOrchestrationDemo.Application.csproj" />
     <ProjectReference Include="..\SagaOrchestrationDemo.Domain\SagaOrchestrationDemo.Domain.csproj" />
   </ItemGroup>
 

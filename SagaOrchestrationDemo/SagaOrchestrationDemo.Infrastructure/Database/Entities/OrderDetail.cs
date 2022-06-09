@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.Entities
+namespace SagaOrchestrationDemo.Infrastructure.Database.Entities
 {
     public class OrderDetail
     {

@@ -1,8 +1,13 @@
-version: '3.4'
+version: '3.7'
 
 services:
   sagaorchestrationdemo.webapi:
-    image: ${DOCKER_REGISTRY-}sagaorchestrationdemowebapi
+    image: ${DOCKER_REGISTRY-}sagaorchestrationdemo.webapi
     build:
       context: .
       dockerfile: SagaOrchestrationDemo.WebApi/Dockerfile
+    networks:
+      - sagaorchestrationdemo-network
+
+networks:
+  gcsb-connect-receivables-network:

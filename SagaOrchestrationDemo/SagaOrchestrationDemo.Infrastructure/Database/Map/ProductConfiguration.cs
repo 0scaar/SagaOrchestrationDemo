@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.Entities;
+using SagaOrchestrationDemo.Infrastructure.Database.Entities;
 using System;
 
-namespace SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.EntityConfigurations
+namespace SagaOrchestrationDemo.Infrastructure.Database.Map
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

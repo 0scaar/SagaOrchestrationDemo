@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SagaOrchestrationDemo.Infrastructure.PostgresDataAccess.Entities
+namespace SagaOrchestrationDemo.Infrastructure.Database.Entities
 {
     public class Order : Entity
     {

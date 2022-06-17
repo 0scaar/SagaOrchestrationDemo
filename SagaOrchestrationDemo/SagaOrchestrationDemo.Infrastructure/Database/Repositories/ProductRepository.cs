@@ -41,6 +41,8 @@ namespace SagaOrchestrationDemo.Infrastructure.Database.Repositories
                 context.Products
                     .Where(s => s.Id == id && s.Quantity <= qty)
                     .FirstOrDefault().Quantity = qty;
+
+                context.SaveChanges();
             }
         }
     }

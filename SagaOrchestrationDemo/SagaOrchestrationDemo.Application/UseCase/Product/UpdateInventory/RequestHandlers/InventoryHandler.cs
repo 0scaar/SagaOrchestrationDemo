@@ -6,30 +6,26 @@ namespace SagaOrchestrationDemo.Application.UseCase.Product.UpdateInventory.Requ
     public class InventoryHandler : Handler<UpdateInventoryRequest>
     {
         private readonly IProduct product;
-        private readonly IUnitOfWork unitOfWork;
 
-        public InventoryHandler(IProduct product, IUnitOfWork unitOfWork)
+        public InventoryHandler(IProduct product)
         {
             this.product = product;
-            this.unitOfWork = unitOfWork;
         }
 
         public override void ProcessRequest(UpdateInventoryRequest request)
         {
-            request.ValidateUpdate = true;
+            request.ValidateUpdate = request.ProductInventories
+                .Join(request.Products, i => i.ProductId, p => p.Id, (i, p) => new { i, p })
+                .Any(a => a.p.Quantity < a.i.Quantity);
+
+            if (!request.ValidateUpdate)
+                return;
 
             request.ProductInventories.ForEach(p =>
             {
                 var filteredProduct = request.Products.Where(f => f.Id == p.ProductId).FirstOrDefault();
-
-                if (filteredProduct.Quantity >= p.Quantity)
-                    product.UpdateInventory(p.ProductId, (short)(filteredProduct.Quantity - p.Quantity));
-                else
-                    request.ValidateUpdate = false;
+                product.UpdateInventory(p.ProductId, (short)(filteredProduct.Quantity - p.Quantity));
             });
-
-            if (request.ValidateUpdate)
-                unitOfWork.SaveChanges();
 
             Sucessor?.ProcessRequest(request);
         }

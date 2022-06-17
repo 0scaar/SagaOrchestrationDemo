@@ -16,6 +16,7 @@ namespace SagaOrchestrationDemo.Application.UseCase.Product.UpdateInventory
         {
             ProductInventories = productInventories;
             Products = new List<Domain::Product>();
+            ValidateUpdate = true;
         }
     }
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SagaOrchestrationDemo.Application.UseCase.ProductByQty;
+using SagaOrchestrationDemo.Application.UseCase.Product.ProductByQty;
 using System.Collections.Generic;
 
 namespace SagaOrchestrationDemo.WebApi.UseCases.Product.ProductsByQty

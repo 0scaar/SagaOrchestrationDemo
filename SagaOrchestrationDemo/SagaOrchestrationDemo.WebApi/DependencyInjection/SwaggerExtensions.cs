@@ -15,16 +15,7 @@ namespace SagaOrchestrationDemo.WebApi.DependencyInjection
             {
                 document.Title = "SagaOrchestrationDemo.WebApi";
                 document.Version = "v1";
-                //document.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT Token"));
 
-                //document.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT Token", new List<string>(),
-                //    new OpenApiSecurityScheme
-                //    {
-                //        Type = OpenApiSecuritySchemeType.ApiKey,
-                //        Name = "Authorization",
-                //        Description = "Copy 'Bearer ' + valid JWT token into field",
-                //        In = OpenApiSecurityApiKeyLocation.Header
-                //    }));
                 document.PostProcess = s =>
                 {
                     s.Paths.ToList().ForEach(p =>

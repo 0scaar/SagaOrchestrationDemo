@@ -1,5 +1,9 @@
 ﻿using Autofac;
+using SagaOrchestrationDemo.Application.Helpers;
+using SagaOrchestrationDemo.Domain.Domains;
 using SagaOrchestrationDemo.Infrastructure.Modules;
+using SagaOrchestrationDemo.WebApi.UseCases.Product.ProductsByQty;
+using System.Collections.Generic;
 
 namespace SagaOrchestrationDemo.WebApi.DependencyInjection
 {
@@ -9,7 +13,8 @@ namespace SagaOrchestrationDemo.WebApi.DependencyInjection
         {
             builder.RegisterModule<ApplicationModule>();
             builder.RegisterModule<InfrastructureModule>();
-            //builder.RegisterModule<WebapiModule>();
+
+            builder.RegisterType<ProductsByQtyPresenter>().As<IOutputPort<List<Product>>>().AsSelf().InstancePerLifetimeScope();
 
             return builder;
         }

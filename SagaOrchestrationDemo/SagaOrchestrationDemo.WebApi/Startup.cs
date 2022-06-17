@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using SagaOrchestrationDemo.WebApi.DependencyInjection;
 using Newtonsoft.Json.Converters;
 using Hellang.Middleware.ProblemDetails;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.HttpOverrides;
 using Autofac.Extensions.DependencyInjection;
 
@@ -51,14 +50,8 @@ namespace SagaOrchestrationDemo.WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             var serviceProvider = app.ApplicationServices;
-            //var resouces = serviceProvider.GetService<IStringLocalizer<ReturnMessages>>();
 
             this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
-
-            //app.UseExceptionHandler(new ExceptionHandlerOptions
-            //{
-            //    ExceptionHandler = new ErrorHandlerMiddleware(env, resouces).Invoke
-            //});
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {

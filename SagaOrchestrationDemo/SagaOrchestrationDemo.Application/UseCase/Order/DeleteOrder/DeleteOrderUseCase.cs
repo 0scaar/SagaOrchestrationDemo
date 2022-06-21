@@ -1,4 +1,5 @@
-﻿using SagaOrchestrationDemo.Application.Helpers;
+﻿using SagaOrchestrationDemo.Application.Boundaries.Order;
+using SagaOrchestrationDemo.Application.Helpers;
 using SagaOrchestrationDemo.Application.Interfaces;
 using System;
 
@@ -7,9 +8,9 @@ namespace SagaOrchestrationDemo.Application.UseCase.Order.DeleteOrder
     public class DeleteOrderUseCase : IDeleteOrderUseCase
     {
         private readonly IOrder order;
-        private readonly IOutputPort<Guid> outputPort;
+        private readonly IOutputPort<DeleteBoundary> outputPort;
 
-        public DeleteOrderUseCase(IOrder order, IOutputPort<Guid> outputPort)
+        public DeleteOrderUseCase(IOrder order, IOutputPort<DeleteBoundary> outputPort)
         {
             this.order = order;
             this.outputPort = outputPort;
@@ -24,7 +25,7 @@ namespace SagaOrchestrationDemo.Application.UseCase.Order.DeleteOrder
                 if (orderDeleted == 0)
                     outputPort.NotFound("Order not found");
                 else
-                    outputPort.Standard(request.IdOrder);
+                    outputPort.Standard(new DeleteBoundary(request.IdOrder));
             }
             catch (Exception ex)
             {

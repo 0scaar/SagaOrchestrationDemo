@@ -26,4 +26,8 @@
     <ProjectReference Include="..\SagaOrchestrationDemo.Infrastructure\SagaOrchestrationDemo.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Notifier\" />
+  </ItemGroup>
+
 </Project>

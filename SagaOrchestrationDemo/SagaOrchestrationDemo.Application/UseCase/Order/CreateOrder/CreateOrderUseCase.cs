@@ -1,4 +1,5 @@
-﻿using SagaOrchestrationDemo.Application.Helpers;
+﻿using SagaOrchestrationDemo.Application.Boundaries.Order;
+using SagaOrchestrationDemo.Application.Helpers;
 using SagaOrchestrationDemo.Application.UseCase.Order.CreateOrder.RequestHandlers;
 using System;
 
@@ -7,11 +8,11 @@ namespace SagaOrchestrationDemo.Application.UseCase.Order.CreateOrder
     public class CreateOrderUseCase : ICreateOrderUseCase
     {
         private readonly GetCustomerHandler getCustomerHandler;
-        private readonly IOutputPort<Guid> outputPort;
+        private readonly IOutputPort<CreateBoundary> outputPort;
 
         public CreateOrderUseCase(GetCustomerHandler getCustomerHandler, 
             SaveOrderHandler saveOrderHandler,
-            IOutputPort<Guid> outputPort)
+            IOutputPort<CreateBoundary> outputPort)
         {
             getCustomerHandler.SetSucessor(saveOrderHandler);
 
@@ -28,7 +29,7 @@ namespace SagaOrchestrationDemo.Application.UseCase.Order.CreateOrder
                 if (!request.ExistCustomer)
                     outputPort.NotFound("Customer not found");
                 else
-                    outputPort.Standard(request.OrderId);
+                    outputPort.Standard(new CreateBoundary(request.OrderId));
             }
             catch (Exception ex)
             {

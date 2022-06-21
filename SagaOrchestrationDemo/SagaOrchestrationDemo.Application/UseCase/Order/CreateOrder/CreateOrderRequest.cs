@@ -10,14 +10,14 @@ namespace SagaOrchestrationDemo.Application.UseCase.Order.CreateOrder
         public string ShipCity { get; private set; }
         public string ShipCountry { get; private set; }
         public string ShipPostalCode { get; private set; }
-        public List<CreateOrderDetail> OrderDetails { get; private set; }
+        public List<CreateOrderDetailRequest> OrderDetails { get; private set; }
         public Guid CustomerId { get; set; }
         public bool ExistCustomer { get; set; }
         public Guid OrderId { get; set; }
 
         public CreateOrderRequest(string customerCode, string shipAddress, 
             string shipCity, string shipCountry, string shipPostalCode, 
-            List<CreateOrderDetail> orderDetails)
+            List<CreateOrderDetailRequest> orderDetails)
         {
             CustomerCode = customerCode;
             ShipAddress = shipAddress;
@@ -29,13 +29,13 @@ namespace SagaOrchestrationDemo.Application.UseCase.Order.CreateOrder
         }
     }
 
-    public class CreateOrderDetail
+    public class CreateOrderDetailRequest
     {
         public Guid ProductId { get; private set; }
         public decimal UnitPrice { get; private set; }
         public short Quantity { get; private set; }
 
-        public CreateOrderDetail(Guid productId, decimal unitPrice, short quantity)
+        public CreateOrderDetailRequest(Guid productId, decimal unitPrice, short quantity)
         {
             ProductId = productId;
             UnitPrice = unitPrice;
